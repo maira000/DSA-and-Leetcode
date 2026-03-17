@@ -1,8 +1,8 @@
 class Solution:
     def numIdenticalPairs(self, nums):
+        from collections import Counter
+        freq = Counter(nums)
         count = 0
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if nums[i] == nums[j]:
-                    count += 1
+        for val in freq.values():
+            count += (val * (val - 1)) // 2  # nC2 formula
         return count
